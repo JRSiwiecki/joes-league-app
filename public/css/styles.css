@@ -10,6 +10,14 @@ body {
   color: #A27B5C;
 }
 
-img {
+.champion-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.champion-img {
   width: 200px;
 }

@@ -1,5 +1,32 @@
-<%- include("header.ejs"); -%>
+<%- include("partials/header.ejs"); -%>
 
-<img src="data_dragon/img/champion/tiles/<%=championImage%>_0.jpg" alt="<%= championImage %>">
+<section class="home-main">
 
-<%- include("footer.ejs"); -%>
+  <div class="champion-img-container row d-flex justify-content-center">
+
+      <div class="col-lg-2">
+        <img class="champion-img" src="data_dragon/img/champion/tiles/<%=champImg1%>_0.jpg" alt="<%= champImg1 %>">
+      </div>
+
+      <div class="col-lg-2">
+        <img class="champion-img" src="data_dragon/img/champion/tiles/<%=champImg2%>_0.jpg" alt="<%= champImg2 %>">
+      </div>
+
+      <div class="col-lg-2">
+        <img class="champion-img" src="data_dragon/img/champion/tiles/<%=champImg3%>_0.jpg" alt="<%= champImg3 %>">
+      </div>
+
+      <div class="col-lg-2">
+        <img class="champion-img" src="data_dragon/img/champion/tiles/<%=champImg4%>_0.jpg" alt="<%= champImg4 %>">
+      </div>
+
+      <div class="col-lg-2">
+        <img class="champion-img" src="data_dragon/img/champion/tiles/<%=champImg5%>_0.jpg" alt="<%= champImg5 %>">
+      </div>
+
+  </div>
+
+</section>
+
+
+<%- include("partials/footer.ejs"); -%>
