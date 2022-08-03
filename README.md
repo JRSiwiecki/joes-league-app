@@ -1,4 +1,6 @@
 # joes-league-app
+## What is this
+This is a web app I've created to generate random clash team names and generate random team compositions.
 
 ## How to use
 
