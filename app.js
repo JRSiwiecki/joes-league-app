@@ -57,6 +57,10 @@ app.get("/teambuilder", (req, res) => {
   randomChampList = [];
 });
 
+app.post("/teambuilder", (req, res) => {
+  res.redirect("teambuilder");
+});
+
 app.use(express.static("public"));
 
 

@@ -15,7 +15,8 @@ body {
 }
 
 #home-title {
-  margin-top: 3.5%;
+  margin-top: 3%;
+  font-weight: bold;
 }
 
 .home-images-container {
@@ -40,7 +41,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 100vh;
+  min-height: 75vh;
 }
 
 .champion-img {
@@ -48,6 +49,25 @@ body {
   margin-bottom: 10px;
 }
 
+.clash-team-name-generator-title {
+  margin-top: 3%;
+}
+
+.team-builder-title {
+  text-align: center;
+  margin-top: 3%;
+}
+
+.generate-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .light-text {
   color: #DCD7C9;
+}
+
+.bold-text {
+  font-weight: bold;
 }
