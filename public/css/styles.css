@@ -10,6 +10,31 @@ body {
   color: #A27B5C;
 }
 
+.main {
+  text-align: center;
+}
+
+#home-title {
+  margin-top: 3.5%;
+}
+
+.home-images-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clash-team-name-img, .clash-team-composition-img{
+  height: auto;
+  width: 500px;
+  margin: 5%;
+  border-radius: 10%;
+}
+
+.img-caption {
+  display: inline-block;
+}
+
 .champion-img-container {
   display: flex;
   justify-content: center;
@@ -19,10 +44,10 @@ body {
 }
 
 .champion-img {
-  width: 200px;
+  width: 300px;
   margin-bottom: 10px;
 }
 
-.champion-name {
+.light-text {
   color: #DCD7C9;
 }

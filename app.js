@@ -19,6 +19,15 @@ let randomChampList = [];
 
 app.get("/", (req, res) => {
 
+res.render("home");
+
+});
+
+app.get("/teamnamegenerator", (req, res) => {
+  res.render("teamnamegenerator");
+});
+
+app.get("/teambuilder", (req, res) => {
   kayn.DDragon.Champion.list() // Implicitly targets 8.24.1
     .callback(function(error, champions) {
 
@@ -36,7 +45,7 @@ app.get("/", (req, res) => {
 
       }
 
-      res.render("home", {
+      res.render("teambuilder", {
         champName1: randomChampList[0],
         champName2: randomChampList[1],
         champName3: randomChampList[2],
@@ -46,7 +55,6 @@ app.get("/", (req, res) => {
     });
 
   randomChampList = [];
-
 });
 
 app.use(express.static("public"));
