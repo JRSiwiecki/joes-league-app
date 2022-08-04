@@ -10,6 +10,10 @@ body {
   color: #A27B5C;
 }
 
+.navbar-brand:hover, .nav-link:hover {
+  color: #DCD7C9;
+}
+
 .main {
   text-align: center;
 }
@@ -41,12 +45,13 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 75vh;
+  min-height: 50vh;
 }
 
 .champion-img {
   width: 300px;
   margin-bottom: 10px;
+  border-radius: 10%;
 }
 
 .clash-team-name-generator-title {
