@@ -20,4 +20,9 @@ body {
 
 .champion-img {
   width: 200px;
+  margin-bottom: 10px;
+}
+
+.champion-name {
+  color: #DCD7C9;
 }

@@ -8,32 +8,7 @@ const {
   Kayn,
   REGIONS
 } = require('kayn')
-const kayn = Kayn(api_key)(
-  /*{
-      region: REGIONS.NORTH_AMERICA,
-      apiURLPrefix: 'https://%s.api.riotgames.com',
-      locale: 'en_US',
-      debugOptions: {
-          isEnabled: true,
-          showKey: false,
-      },
-      requestOptions: {
-          shouldRetry: true,
-          numberOfRetriesBeforeAbort: 3,
-          delayBeforeRetry: 1000,
-          burst: false,
-          shouldExitOn403: false,
-      },
-      cacheOptions: {
-          cache: null,
-          timeToLives: {
-              useDefault: false,
-              byGroup: {},
-              byMethod: {},
-          },
-      },
-  }*/
-);
+const kayn = Kayn(api_key)();
 
 const app = express();
 const port = 3000;
@@ -47,30 +22,30 @@ app.get("/", (req, res) => {
   kayn.DDragon.Champion.list() // Implicitly targets 8.24.1
     .callback(function(error, champions) {
 
-      let championList = Object.keys(champions.data);
-      let randomChamp1 = championList[Math.floor(Math.random() * 161)];
-
+      let championNameList = Object.keys(champions.data);
 
       for (let i = 0; i < 5; i++) {
 
-        let randomChamp = championList[Math.floor(Math.random() * 161)];
-        console.log(randomChamp);
+        let randomChamp;
+
+        do {
+          randomChamp = championNameList[Math.floor(Math.random() * 161)];
+        } while (randomChampList.indexOf(randomChamp) !== -1)
 
         randomChampList.push(randomChamp);
 
       }
 
       res.render("home", {
-        champImg1: randomChampList[0],
-        champImg2: randomChampList[1],
-        champImg3: randomChampList[2],
-        champImg4: randomChampList[3],
-        champImg5: randomChampList[4],
+        champName1: randomChampList[0],
+        champName2: randomChampList[1],
+        champName3: randomChampList[2],
+        champName4: randomChampList[3],
+        champName5: randomChampList[4],
       });
     });
 
-    randomChampList = [];
-
+  randomChampList = [];
 
 });
 
