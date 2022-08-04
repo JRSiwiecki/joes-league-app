@@ -30,7 +30,7 @@ body {
   justify-content: center;
 }
 
-.clash-team-name-img, .clash-team-composition-img{
+.clash-team-name-img, .clash-team-composition-img {
   height: auto;
   width: 500px;
   margin: 5%;
@@ -82,7 +82,6 @@ body {
   margin-top: 2%;
   display: flex;
   justify-content: center;
-
 }
 
 .light-text {

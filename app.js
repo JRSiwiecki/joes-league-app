@@ -30,6 +30,7 @@ app.set("view engine", "ejs");
 let champImgList = [];
 let champNameList = [];
 let champTitleList = [];
+let championTypeList = [];
 
 // HOME PAGE
 
@@ -75,6 +76,7 @@ app.get("/teambuilder", (req, res) => {
     champImgList = [];
     champNameList = [];
     champTitleList = [];
+    championTypeList = [];
 });
 
 app.post("/teambuilder", (req, res) => {
@@ -94,7 +96,7 @@ function getRandomChampionsAndTitles() {
     .callback(function(error, champions) {
 
       // turn champions.data json into array to get champion names
-      let championNameList = Object.keys(champions.data);
+      let championNameData = Object.keys(champions.data);
 
       // choose 5 random champions and add them to randomChampList
       for (let i = 0; i < 5; i++) {
@@ -103,19 +105,22 @@ function getRandomChampionsAndTitles() {
 
         // prevents duplicate champions from appearing
         do {
-          randomChamp = championNameList[Math.floor(Math.random() * 161)];
-
+          randomChamp = championNameData[Math.floor(Math.random() * 161)];
         } while (champImgList.indexOf(randomChamp) !== -1)
 
         // retreives title for champion from the random champion
         // couldnt figure out how to do this without jsonpath library
         let champName = jsonpath.query(champions, '$.data.' + randomChamp + '.name')
         let champTitle = jsonpath.query(champions, '$.data.' + randomChamp + '.title');
+        let championType = jsonpath.query(champions, '$.data.' + randomChamp + '.tags')
+
+        // TODO: ROLE BASED ON CHAMPION TAGS
 
         // push the random champ and their titles
         champImgList.push(randomChamp);
         champNameList.push(champName);
         champTitleList.push(champTitle);
+        championTypeList.push(championType);
       }
     });
 }
