@@ -42,41 +42,45 @@ app.get("/", (req, res) => {
 
 // TEAM NAME GENERATOR
 
-app.get("/teamnamegenerator", (req, res) => {
-  res.render("teamnamegenerator");
+app.get("/itemsgenerator", (req, res) => {
+  res.render("itemsgenerator");
 });
 
 // TEAM COMPOSITION BUILDER
 
 app.get("/teambuilder", (req, res) => {
 
-    getRandomChampionsAndTitles();
+  getRandomChampionsAndTitles();
 
-    res.render("teambuilder", {
-      champImg1: champImgList[0],
-      champImg2: champImgList[1],
-      champImg3: champImgList[2],
-      champImg4: champImgList[3],
-      champImg5: champImgList[4],
+  res.render("teambuilder", {
+    champImg1: champImgList[0],
+    champImg2: champImgList[1],
+    champImg3: champImgList[2],
+    champImg4: champImgList[3],
+    champImg5: champImgList[4],
 
-      champName1: champNameList[0],
-      champName2: champNameList[1],
-      champName3: champNameList[2],
-      champName4: champNameList[3],
-      champName5: champNameList[4],
+    champName1: champNameList[0],
+    champName2: champNameList[1],
+    champName3: champNameList[2],
+    champName4: champNameList[3],
+    champName5: champNameList[4],
 
-      champTitle1: champTitleList[0],
-      champTitle2: champTitleList[1],
-      champTitle3: champTitleList[2],
-      champTitle4: champTitleList[3],
-      champTitle5: champTitleList[4],
-    });
+    champTitle1: champTitleList[0],
+    champTitle2: champTitleList[1],
+    champTitle3: champTitleList[2],
+    champTitle4: champTitleList[3],
+    champTitle5: champTitleList[4],
+  });
 
-    // get new set of champs and titles
-    champImgList = [];
-    champNameList = [];
-    champTitleList = [];
-    championTypeList = [];
+  // get new set of champs and titles
+
+
+  champImgList = [];
+  champNameList = [];
+  champTitleList = [];
+  championTypeList = [];
+
+
 });
 
 app.post("/teambuilder", (req, res) => {
@@ -123,4 +127,8 @@ function getRandomChampionsAndTitles() {
         championTypeList.push(championType);
       }
     });
+}
+
+function getRandomItems() {
+
 }
