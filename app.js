@@ -161,35 +161,80 @@ function getRandomItems() {
 
         let randomItem;
 
-
         do {
           randomItem = itemData[Math.floor(Math.random() * 254)];
 
-          if (jsonpath.query(items, '$.data.' + randomItem + '.inStore')[0] === undefined) {
-            continue;
-          }
-
-          if (jsonpath.query(items, '$.data.' + randomItem + '.consumed')[0] === undefined) {
-            continue;
-          }
-
-          if (jsonpath.query(items, '$.data.' + randomItem + '.maps.11')[0] !== true) {
-            continue;
-          }
-
-          if (jsonpath.query(items, '$.data.' + randomItem + '.requiredAlly') !== "Ornn") {
-            continue;
-          }
-
         } while (itemList.indexOf(randomItem) !== -1);
 
+        // if it's in the store, it's allowed
+        // if it's consumable, it's not allowed
+        // if it's on summoners rift, it's allowed
+        // if it needs ornn, it's not allowed
+        // if it is fiddlestick's item, it's not allowed
+        // if it includes trinket or consumable in tags, it's not allowed
+        // if it has no plaintext, it's probably not allowed
+        // if it is hidden, it's probably not allowed
+        // if its price is less than 1450, it's not allowed
+        let inStore = jsonpath.query(items, '$.data.' + randomItem + '.inStore')[0];
+        let consumable = jsonpath.query(items, '$.data.' + randomItem + '.consumed')[0];
+        let onSummonersRift = jsonpath.query(items, '$.data.' + randomItem + '.maps.11')[0];
+        let ornn = jsonpath.query(items, '$.data.' + randomItem + '.requiredAlly')[0];
+        let fiddle = jsonpath.query(items, '$.data.' + randomItem + '.requiredChampion')[0];
+        let tag = jsonpath.query(items, '$.data.' + randomItem + '.tags')[0];
+        let plaintext = jsonpath.query(items, '$.data.' + randomItem + '.plaintext')[0];
+        let hidden = jsonpath.query(items, '$.data.' + randomItem + '.hideFromAll')[0];
+        let price = jsonpath.query(items, '$.data.' + randomItem + '.gold.total')[0];
+
+        if (inStore !== undefined || inStore === false) {
+          i--;
+          continue;
+        }
+
+        if (consumable !== undefined || consumable === true) {
+          i--;
+          continue;
+        }
+
+        if (onSummonersRift !== true) {
+          i--;
+          continue;
+        }
+
+        if (ornn !== undefined || ornn === "Ornn") {
+          i--;
+          continue;
+        }
+
+        if (fiddle !== undefined || fiddle === "FiddleSticks") {
+          i--;
+          continue;
+        }
+
+        if (plaintext === "")
+        {
+          i--;
+          continue;
+        }
+
+        if (tag.includes("Trinket") || tag.includes("Consumable"))  {
+          i--;
+          continue;
+        }
+
+        if (hidden === true) {
+          i--;
+          continue;
+        }
+
+        if (price <= 1450 && !tag.includes("GoldPer")) {
+          i--;
+          continue;
+        }
 
         let itemName = jsonpath.query(items, '$.data.' + randomItem + '.name').toString();
 
         itemList.push(randomItem);
         itemNameList.push(itemName);
       }
-
-      // console.log("---");
     });
 }
