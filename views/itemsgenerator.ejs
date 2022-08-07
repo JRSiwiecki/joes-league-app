@@ -1,7 +1,61 @@
 <%- include("partials/header.ejs"); -%>
 
 <section class="main">
+
   <h1 class="items-generator-title light-text bold-text">Random Items Generator</h1>
+
+  <div class="item-img-container row">
+
+    <div class="col-lg-2">
+      <div class="item-container">
+        <img class="item-img" src="data_dragon/12.14.1/img/item/<%=itemImg1%>.png" alt="<%= itemName1 %>">
+        <h2 class="item-name"><%= itemName1 %> </h2>
+      </div>
+    </div>
+
+    <div class="col-lg-2">
+      <div class="item-container">
+        <img class="item-img" src="data_dragon/12.14.1/img/item/<%=itemImg2%>.png" alt="<%= itemName2 %>">
+        <h2 class="item-name"><%= itemName2 %> </h2>
+      </div>
+    </div>
+
+    <div class="col-lg-2">
+      <div class="item-container">
+        <img class="item-img" src="data_dragon/12.14.1/img/item/<%=itemImg3%>.png" alt="<%= itemName3 %>">
+        <h2 class="item-name"><%= itemName3 %> </h2>
+      </div>
+    </div>
+
+    <div class="col-lg-2">
+      <div class="item-container">
+        <img class="item-img" src="data_dragon/12.14.1/img/item/<%=itemImg4%>.png" alt="<%= itemName4 %>">
+        <h2 class="item-name"><%= itemName4 %> </h2>
+      </div>
+    </div>
+
+    <div class="col-lg-2">
+      <div class="item-container">
+        <img class="item-img" src="data_dragon/12.14.1/img/item/<%=itemImg5%>.png" alt="<%= itemName5 %>">
+        <h2 class="item-name"><%= itemName5 %> </h2>
+      </div>
+    </div>
+
+    <div class="col-lg-2">
+      <div class="item-container">
+        <img class="item-img" src="data_dragon/12.14.1/img/item/<%=itemImg6%>.png" alt="<%= itemName6 %>">
+        <h2 class="item-name"><%= itemName6 %> </h2>
+      </div>
+    </div>
+
+  </div>
+
+  <form class="generate-button" action="itemsgenerator" method="post">
+    <button class="btn btn-outline-secondary btn-lg" type="submit" name="button">
+      <h2 class="light-text">Generate New Items</h2>
+    </button>
+  </form>
+
 </section>
 
 

@@ -30,7 +30,9 @@ app.set("view engine", "ejs");
 let champImgList = [];
 let champNameList = [];
 let champTitleList = [];
-let championTypeList = [];
+
+let itemList = [];
+let itemNameList = [];
 
 // HOME PAGE
 
@@ -43,7 +45,32 @@ app.get("/", (req, res) => {
 // TEAM NAME GENERATOR
 
 app.get("/itemsgenerator", (req, res) => {
-  res.render("itemsgenerator");
+
+  getRandomItems();
+
+  res.render("itemsgenerator", {
+    itemImg1: itemList[0],
+    itemImg2: itemList[1],
+    itemImg3: itemList[2],
+    itemImg4: itemList[3],
+    itemImg5: itemList[4],
+    itemImg6: itemList[5],
+
+    itemName1: itemNameList[0],
+    itemName2: itemNameList[1],
+    itemName3: itemNameList[2],
+    itemName4: itemNameList[3],
+    itemName5: itemNameList[4],
+    itemName6: itemNameList[5],
+  });
+
+  itemList = [];
+  itemNameList = [];
+
+});
+
+app.post("/itemsgenerator", (req, res) => {
+  res.redirect("itemsgenerator");
 });
 
 // TEAM COMPOSITION BUILDER
@@ -73,8 +100,6 @@ app.get("/teambuilder", (req, res) => {
   });
 
   // get new set of champs and titles
-
-
   champImgList = [];
   champNameList = [];
   champTitleList = [];
@@ -97,7 +122,7 @@ function getRandomChampionsAndTitles() {
 
   // use kayn api to get list of champions as a .json
   kayn.DDragon.Champion.list()
-    .callback(function(error, champions) {
+    .callback((error, champions) => {
 
       // turn champions.data json into array to get champion names
       let championNameData = Object.keys(champions.data);
@@ -110,25 +135,61 @@ function getRandomChampionsAndTitles() {
         // prevents duplicate champions from appearing
         do {
           randomChamp = championNameData[Math.floor(Math.random() * 161)];
-        } while (champImgList.indexOf(randomChamp) !== -1)
+        } while (champImgList.indexOf(randomChamp) !== -1);
 
         // retreives title for champion from the random champion
         // couldnt figure out how to do this without jsonpath library
         let champName = jsonpath.query(champions, '$.data.' + randomChamp + '.name')
         let champTitle = jsonpath.query(champions, '$.data.' + randomChamp + '.title');
-        let championType = jsonpath.query(champions, '$.data.' + randomChamp + '.tags')
-
-        // TODO: ROLE BASED ON CHAMPION TAGS
 
         // push the random champ and their titles
         champImgList.push(randomChamp);
         champNameList.push(champName);
         champTitleList.push(champTitle);
-        championTypeList.push(championType);
       }
     });
 }
 
 function getRandomItems() {
 
+  kayn.DDragon.Item.list()
+    .callback((error, items) => {
+
+      let itemData = Object.keys(items.data);
+
+      for (let i = 0; i < 6; i++) {
+
+        let randomItem;
+
+
+        do {
+          randomItem = itemData[Math.floor(Math.random() * 254)];
+
+          if (jsonpath.query(items, '$.data.' + randomItem + '.inStore')[0] === undefined) {
+            continue;
+          }
+
+          if (jsonpath.query(items, '$.data.' + randomItem + '.consumed')[0] === undefined) {
+            continue;
+          }
+
+          if (jsonpath.query(items, '$.data.' + randomItem + '.maps.11')[0] !== true) {
+            continue;
+          }
+
+          if (jsonpath.query(items, '$.data.' + randomItem + '.requiredAlly') !== "Ornn") {
+            continue;
+          }
+
+        } while (itemList.indexOf(randomItem) !== -1);
+
+
+        let itemName = jsonpath.query(items, '$.data.' + randomItem + '.name').toString();
+
+        itemList.push(randomItem);
+        itemNameList.push(itemName);
+      }
+
+      // console.log("---");
+    });
 }

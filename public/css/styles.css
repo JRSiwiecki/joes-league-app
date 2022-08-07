@@ -41,10 +41,9 @@ body {
   display: inline-block;
 }
 
-.champion-img-container {
+.champion-img-container, .item-img-container {
   display: flex;
   justify-content: center;
-  align-items: center;
   text-align: center;
   min-height: 50vh;
 }
@@ -59,7 +58,13 @@ body {
   border-radius: 10%;
 }
 
-.champion-name {
+.item-img {
+  width: 150px;
+  margin-bottom: 10px;
+  border-radius: 10%;
+}
+
+.champion-name, .item-name {
   color: #A27B5C;
   font-weight: bold;
 }
@@ -71,6 +76,7 @@ body {
 
 .items-generator-title {
   margin-top: 3%;
+  margin-bottom: 3%;
 }
 
 .team-builder-title {
