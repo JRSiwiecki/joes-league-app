@@ -1,6 +1,6 @@
 # joes-league-app
 ## What is this
-This is a web app I've created to generate random clash team names and generate random team compositions.
+This is a web app I've created to generate random team compositions and random item builds for League of Legends.
 
 ## How to use
 
