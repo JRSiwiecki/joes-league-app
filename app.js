@@ -105,7 +105,6 @@ app.get("/teambuilder", (req, res) => {
   champTitleList = [];
   championTypeList = [];
 
-
 });
 
 app.post("/teambuilder", (req, res) => {
@@ -174,7 +173,7 @@ function getRandomItems() {
         // if it includes trinket or consumable in tags, it's not allowed
         // if it has no plaintext, it's probably not allowed
         // if it is hidden, it's probably not allowed
-        // if its price is less than 1450, it's not allowed
+        // if its price is less than 1450, it's not allowed UNLESS it's a support item OR it's boots
         let inStore = jsonpath.query(items, '$.data.' + randomItem + '.inStore')[0];
         let consumable = jsonpath.query(items, '$.data.' + randomItem + '.consumed')[0];
         let onSummonersRift = jsonpath.query(items, '$.data.' + randomItem + '.maps.11')[0];
@@ -210,13 +209,12 @@ function getRandomItems() {
           continue;
         }
 
-        if (plaintext === "")
-        {
+        if (plaintext === "") {
           i--;
           continue;
         }
 
-        if (tag.includes("Trinket") || tag.includes("Consumable"))  {
+        if (tag.includes("Trinket") || tag.includes("Consumable")) {
           i--;
           continue;
         }
@@ -226,7 +224,7 @@ function getRandomItems() {
           continue;
         }
 
-        if (price <= 1450 && !tag.includes("GoldPer")) {
+        if (price <= 1450 && !tag.includes("GoldPer") && !tag.includes("Boots")) {
           i--;
           continue;
         }
@@ -237,4 +235,8 @@ function getRandomItems() {
         itemNameList.push(itemName);
       }
     });
+}
+
+function checkItems(rawItemsData, item) {
+
 }

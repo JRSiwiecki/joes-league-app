@@ -2,6 +2,8 @@ body {
   background-color: #2C3639;
 }
 
+/* NAVBAR */
+
 .navbar-brand {
   font-weight: bold;
 }
@@ -13,6 +15,8 @@ body {
 .navbar-brand:hover, .nav-link:hover {
   color: #DCD7C9;
 }
+
+/* HOME */
 
 .main {
   text-align: center;
@@ -29,6 +33,8 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+/* ITEMS GENERATOR */
 
 .items-generator-img, .clash-team-composition-img {
   height: auto;
@@ -48,21 +54,18 @@ body {
   min-height: 50vh;
 }
 
-.role-img {
-  margin: 2%;
-}
-
-.champion-img {
-  width: 300px;
-  margin-bottom: 10px;
-  border-radius: 10%;
-}
-
 .item-img {
   width: 150px;
   margin-bottom: 10px;
   border-radius: 10%;
 }
+
+.items-generator-title {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+/* TEAM COMP GENERATOR */
 
 .champion-name, .item-name {
   color: #A27B5C;
@@ -74,9 +77,14 @@ body {
   font-style: italic;
 }
 
-.items-generator-title {
-  margin-top: 3%;
-  margin-bottom: 3%;
+.role-img {
+  margin: 2%;
+}
+
+.champion-img {
+  width: 300px;
+  margin-bottom: 10px;
+  border-radius: 10%;
 }
 
 .team-builder-title {
@@ -85,7 +93,7 @@ body {
 }
 
 .generate-button {
-  margin-top: 2%;
+  margin-top: 1%;
   display: flex;
   justify-content: center;
 }
