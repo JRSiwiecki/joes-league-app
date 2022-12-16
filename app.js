@@ -12,7 +12,6 @@ const {
   Kayn,
   REGIONS
 } = require('kayn')
-
 const kayn = Kayn(api_key)({
   region: REGIONS.NORTH_AMERICA,
   locale: 'en_US',
@@ -150,9 +149,6 @@ function getRandomChampionsAndTitles() {
     });
 }
 
-// gets random items from data_dragon and supplies them to itemsgenerator.ejs
-// TODO: no guarantee that a mythic item will appear, also no guarantee there won't be multiple
-// mythic items appearing. could use groups from item.json, group 34?
 function getRandomItems() {
 
   kayn.DDragon.Item.list()
