@@ -37,6 +37,7 @@ const app = express();
 const port = 3000;
 
 app.set("view engine", "ejs");
+app.use(express.static("public"));
 
 let champImgList = [];
 let champNameList = [];
@@ -72,6 +73,9 @@ app.get("/itemsgenerator", (req, res) => {
     itemName6: itemNameList[5],
   });
 
+  // if these get placed in the function
+  // getRandomItems()
+  // like they probably should be, the program doesn't work?
   itemList = [];
   itemNameList = [];
 });
@@ -106,6 +110,9 @@ app.get("/teambuilder", (req, res) => {
   });
 
   // get new set of champs and titles
+  // if these get placed inside the
+  // getRandomChampionsAndTitles()
+  // like they probably should be, the function doesn't work?
   champImgList = [];
   champNameList = [];
   champTitleList = [];
@@ -115,10 +122,6 @@ app.get("/teambuilder", (req, res) => {
 app.post("/teambuilder", (req, res) => {
   res.redirect("teambuilder");
 });
-
-app.use(express.static("public"));
-
-app.listen(port, () => {});
 
 function getRandomChampionsAndTitles() {
   // use kayn api to get list of champions as a .json
@@ -132,7 +135,7 @@ function getRandomChampionsAndTitles() {
 
       // prevents duplicate champions from appearing
       do {
-        randomChamp = championNameData[Math.floor(Math.random() * 161)];
+        randomChamp = championNameData[Math.floor(Math.random() * 162)];
       } while (champImgList.indexOf(randomChamp) !== -1);
 
       // retreives title for champion from the random champion
@@ -264,3 +267,5 @@ function getRandomItems() {
 }
 
 function checkItems(rawItemsData, item) {}
+
+app.listen(port, () => {});
