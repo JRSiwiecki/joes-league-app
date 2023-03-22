@@ -46,6 +46,11 @@ let champTitleList = [];
 let itemList = [];
 let itemNameList = [];
 
+// bandaid fix, should be able to solve with
+// async await?
+getRandomChampionsAndTitles();
+getRandomItems();
+
 // HOME PAGE
 
 app.get("/", (req, res) => {
@@ -128,16 +133,13 @@ function getRandomChampionsAndTitles() {
   kayn.DDragon.Champion.list().callback((error, champions) => {
     // turn champions.data json into array to get champion names
     let championNameData = Object.keys(champions.data);
-
     // choose 5 random champions and add them to randomChampList
     for (let i = 0; i < 5; i++) {
       let randomChamp;
-
       // prevents duplicate champions from appearing
       do {
         randomChamp = championNameData[Math.floor(Math.random() * 162)];
       } while (champImgList.indexOf(randomChamp) !== -1);
-
       // retreives title for champion from the random champion
       // couldnt figure out how to do this without jsonpath library
       let champName = jsonpath.query(
@@ -148,7 +150,6 @@ function getRandomChampionsAndTitles() {
         champions,
         "$.data." + randomChamp + ".title"
       );
-
       // push the random champ and their titles
       champImgList.push(randomChamp);
       champNameList.push(champName);
