@@ -46,6 +46,11 @@ let champTitleList = [];
 let itemList = [];
 let itemNameList = [];
 
+// bandaid fix, should be able to solve with
+// async await?
+getRandomChampionsAndTitles();
+getRandomItems();
+
 // HOME PAGE
 
 app.get("/", (req, res) => {
